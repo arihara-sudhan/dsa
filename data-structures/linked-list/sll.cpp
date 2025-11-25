@@ -5,6 +5,7 @@ class SLLNode {
     public:
         int data;
         SLLNode* next;
+
         SLLNode(int data, SLLNode* next=nullptr) {
             this->data = data;
             this->next = next;
@@ -18,9 +19,11 @@ class SinglyLinkedList {
         SinglyLinkedList() {
             this->head = nullptr;
         }
+
         SinglyLinkedList(SLLNode* head) {
             this->head = head;
         }
+
         ~SinglyLinkedList() {
             while(head!=nullptr){
                 SLLNode* temp = head->next;
@@ -28,6 +31,7 @@ class SinglyLinkedList {
                 head = temp;
             }
         }
+
         int numberOfNodes() {
             if(head==nullptr){
                 return 0;
@@ -41,6 +45,7 @@ class SinglyLinkedList {
                 return count;
             }
         }
+
         void append(int data) {
             if(head==nullptr) {
                 head = new SLLNode(data);
@@ -52,11 +57,13 @@ class SinglyLinkedList {
                 temp->next = new SLLNode(data);
             }
         }
+
         void insertAtBeginning(int data){
             SLLNode* newNode = new SLLNode(data);
             newNode->next = head;
             head = newNode;                
         }
+
         void traverse() {
             SLLNode* temp = head;
             while(temp!=nullptr) {
