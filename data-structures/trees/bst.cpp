@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
 class Node {
@@ -97,6 +98,31 @@ public:
 		return search(data, root);
 	}
 
+    void preOrderIterative() {
+        if(root==nullptr) return;
+        stack<Node*> s;
+        s.push(root);
+        while(!s.empty()) {
+            Node* toppest = s.top();
+            cout<<toppest->data<<"->";
+            s.pop();
+            if(toppest->right)
+                s.push(toppest->right);
+            if(toppest->left)
+                s.push(toppest->left);
+        }
+        cout<<"END"<<endl;
+    }
+
+    void postOrderIterative() {
+        if(root==nullptr) return;
+        stack<Node*> s;
+        s.push(root);
+        while(!s.empty()) {
+        }
+        cout<<"END"<<endl;
+    }
+
 	void inOrder(Node* node) {
 		if (node == nullptr) return;
 		inOrder(node->left);
@@ -160,9 +186,10 @@ int main() {
 	bst.addNode(43);
 	bst.addNode(5);
 	cout << bst.search(4) << endl;
-	cout << bst.search(6) << endl;
+	cout << bst.search(90) << endl;
 	bst.traverse();
     bst.deleteNode(43);
 	bst.traverse();
+    bst.preOrderIterative();
 	return 0;
 }
