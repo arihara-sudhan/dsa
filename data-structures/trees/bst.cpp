@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 using namespace std;
 
 class Node {
@@ -114,6 +115,22 @@ public:
         cout<<"END"<<endl;
     }
 
+    void levelOrderTraversal() {
+        if(root==nullptr) return;
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()) {
+            Node* node = q.front();
+            q.pop();
+            cout<<node->data<<"->";
+            if(node->left)
+                q.push(node->left);
+            if(node->right)
+                q.push(node->right);
+        }
+        cout<<"END"<<endl;
+    }
+
     void postOrderIterative() {
         if(root==nullptr) return;
         stack<Node*> s;
@@ -191,5 +208,6 @@ int main() {
     bst.deleteNode(43);
 	bst.traverse();
     bst.preOrderIterative();
+    bst.levelOrderTraversal();
 	return 0;
 }
